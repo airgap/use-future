@@ -1,4 +1,4 @@
-node_modules;
-src.vscode.idea;
-dist;
+node_modules
+src.vscode.idea
+dist
 node_modules
