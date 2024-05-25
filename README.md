@@ -21,7 +21,7 @@ yarn add use-future
 First, import the `useFuture` hook from the `use-future` package:
 
 ```jsx
-import { useFuture } from 'use-future';
+import { useFuture } from "use-future";
 ```
 
 Then, you can use the hook in your functional component like this:
@@ -30,7 +30,7 @@ Then, you can use the hook in your functional component like this:
 const MyComponent = () => {
   const [value, error, loading] = useFuture(async () => {
     // Perform an asynchronous operation here
-    const response = await fetch('https://api.example.com/data');
+    const response = await fetch("https://api.example.com/data");
     const data = await response.json();
     return data;
   }, []);
@@ -55,6 +55,7 @@ const MyComponent = () => {
 - `deps` (optional): An array of dependencies that will trigger the promise factory to be called again if any of them change. Defaults to an empty array.
 
 Returns a tuple containing:
+
 - `value`: The resolved value of the promise, or `undefined` if the promise hasn't resolved yet or if an error occurred.
 - `error`: Any error that occurred during the promise resolution, or `undefined` if no error occurred.
 - `loading`: A boolean indicating whether the promise is still loading.
@@ -64,7 +65,7 @@ Returns a tuple containing:
 Here's an example of how to use `useFuture` to fetch data from an API and display it in a component:
 
 ```jsx
-import { useFuture } from 'use-future';
+import { useFuture } from "use-future";
 
 const UserProfile = ({ userId }) => {
   const [user, error, loading] = useFuture(async () => {
