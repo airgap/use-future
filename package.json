@@ -3,8 +3,8 @@
   "version": "0.0.3",
   "type": "module",
   "description": "Typesafe promise handling for React",
-  "main": "dist/use-future.js",
-  "types": "dist/use-future.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "vite build",
     "clean": "rm -rf node_modules dist",
