@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, DependencyList } from "react";
+import { useState, useEffect, DependencyList } from "react";
 
 export const useFuture = <T>(
   promiseFactory: () => Promise<T>,
@@ -8,14 +8,12 @@ export const useFuture = <T>(
   const [error, setError] = useState<unknown | undefined>(undefined);
   const [loading, setLoading] = useState(true);
 
-  const memoizedPromiseFactory = useCallback(promiseFactory, deps);
-
   useEffect(() => {
     let isMounted = true;
 
     const fetchData = async () => {
       try {
-        const promise = memoizedPromiseFactory();
+        const promise = promiseFactory();
         const resolvedValue = await promise;
         if (isMounted) {
           setValue(resolvedValue);
@@ -31,12 +29,12 @@ export const useFuture = <T>(
       }
     };
 
-    fetchData();
+    void fetchData();
 
     return () => {
       isMounted = false;
     };
-  }, [memoizedPromiseFactory]);
+  }, deps);
 
   return [value, error, loading] as const;
 };
