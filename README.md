@@ -28,12 +28,9 @@ Then, you can use the hook in your functional component like this:
 
 ```jsx
 const MyComponent = () => {
-  const [value, error, loading] = useFuture(async () => {
-    // Perform an asynchronous operation here
-    const response = await fetch("https://api.example.com/data");
-    const data = await response.json();
-    return data;
-  }, []);
+  const [value, error, loading] = useFuture(() =>
+    fetch("https://api.example.com/data").then(({ json }) => json()),
+  );
 
   if (loading) {
     return <div>Loading...</div>;
